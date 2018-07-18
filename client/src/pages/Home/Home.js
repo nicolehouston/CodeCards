@@ -11,7 +11,7 @@ class Home extends Component {
       <div>
       <Title>My Card Collections</Title>
       <Wrapper />
-      <AddButton />
+      <AddButton addCategory= {this.addCategory}/>
       </div>
     );
   }

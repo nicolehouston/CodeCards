@@ -39,7 +39,7 @@ class TextFields extends React.Component {
       });
     };
 
-    handleLogin = () => {
+    handleRegister = () => {
       if (this.state.username && this.state.password) {
         API.saveUser({
           username: this.state.username,
@@ -77,6 +77,9 @@ class TextFields extends React.Component {
           />
           <Button variant="contained" color="secondary" onClick={this.handleLogin} className={classes.button}>
             Login
+          </Button>
+          <Button variant="contained" color="primary" onClick={this.handleregister} className={classes.button}>
+            Register
           </Button>
         </form>
       );
