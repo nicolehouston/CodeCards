@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./pages/Login/Login.js";
 import Navbar from "./components/Navbar";
-import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
-import AddButton from "./components/AddButton";
-//import Drawer from "./components/Drawer";
+import Home from "./pages/Home";
 
+class App extends React.Component {
 
-class App extends Component {
   render() {
     return (
-      <div>
-      <Navbar />
-      <Title>My Card Collections</Title>
-      <Wrapper />
-      <AddButton />
-      </div>
-    );
+      <Router>
+        <div>
+          <Navbar />
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </div>
+      </Router>
+    )
   }
 }
 
