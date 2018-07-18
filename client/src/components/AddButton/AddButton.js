@@ -1,47 +1,104 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import "./AddButton.css";
+import TextField from '@material-ui/core/TextField';
 
-const styles = {
-  card: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-};
 
-function SimpleCard(props) {
-  const { classes } = props;
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
 
-  return (
-    <div>
-      <Card className={classes.card}>
-        <CardActions>
-        <Button variant="fab" color="secondary" aria-label="add" className={classes.button}>
-        <AddIcon />
-        </Button>
-        </CardActions>
-      </Card>
-    </div>
-  );
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
 }
 
-SimpleCard.propTypes = {
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 30,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  menu: {
+    width: 200,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  }
+});
+
+
+
+class SimpleModal extends React.Component {
+  state = {
+    open: false,
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    
+
+    return (
+      <div>
+        <div className={"myButton"}>
+        <Button onClick={this.handleOpen} aria-label="Add" variant="fab" color="primary" className={classes.button}><AddIcon /></Button></div>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div style={getModalStyle()} className={classes.paper}>
+            <Typography variant="title" id="modal-title">
+              Create a Card Category:
+            </Typography>
+            <TextField
+          id="uncontrolled"
+          className={classes.textField}
+          margin="normal"
+        />
+        <Button onClick ={this.handleSubmit} variant="contained" size="small" color="primary" className={classes.button}>
+          Submit
+        </Button>
+          </div>
+        </Modal>
+      </div>
+    );
+  }
+}
+
+SimpleModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleCard);
+// We need an intermediary variable for handling the recursive nesting.
+const SimpleModalWrapped = withStyles(styles)(SimpleModal);
+
+export default SimpleModalWrapped;

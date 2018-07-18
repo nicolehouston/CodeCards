@@ -6,29 +6,14 @@ import Home from "./pages/Home";
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state= {
-      username: '',
-      password: ''
-    };
-  }
-
-  changeUser(user) {
-    this.setState({
-      username: user.username,
-      password: user.password
-    })
-  }
-
   render() {
     return (
       <Router>
         <div>
-          <Navbar username={this.state.username}/>
+          <Navbar />
           <Switch>
             <Route exact path="/login" component={Login} />
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/" component={Home} />
           </Switch>
         </div>
       </Router>
