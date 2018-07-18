@@ -4,12 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import API from "../../utils/API";
+import "./LoginForm.css";
 
 const styles = theme => ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
@@ -39,7 +36,7 @@ class TextFields extends React.Component {
       });
     };
 
-    handleRegister = () => {
+    handleLogin = () => {
       if (this.state.username && this.state.password) {
         API.saveUser({
           username: this.state.username,
@@ -55,7 +52,10 @@ class TextFields extends React.Component {
   
       return (
         <form className={classes.container} noValidate autoComplete="off">
-          <TextField
+        <div><h1>&lt;MyCodeCard/&gt;</h1></div>
+        <div className={"logIn"}>
+        <h2>Login</h2>
+          <div className={"divCenter"}><TextField
           required
             id="username"
             label="username"
@@ -63,8 +63,8 @@ class TextFields extends React.Component {
             value={this.state.username}
             onChange={this.handleChange('username')}
             margin="normal"
-          />
-          <TextField
+          /></div>
+          <div className={"divCenter2"}><TextField
             required
             id="password-input"
             label="Password"
@@ -74,13 +74,13 @@ class TextFields extends React.Component {
             type="password"
             autoComplete="current-password"
             margin="normal"
-          />
+          /></div>
+          <div className={"btnCenter"}>
           <Button variant="contained" color="secondary" onClick={this.handleLogin} className={classes.button}>
             Login
           </Button>
-          <Button variant="contained" color="primary" onClick={this.handleregister} className={classes.button}>
-            Register
-          </Button>
+          </div>
+          </div>
         </form>
       );
     }
