@@ -16,7 +16,10 @@ export default {
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
   },
-  saveCategory: function(categoryData) {
-    return axios.post("/api/categories", categoryData);
+  getUserbyName: function(name) {
+    return axios.get("/api/users/" + name);
+  },
+  saveCategory: function(req) {
+    return axios.put("/api/users/" + req.username, req);
   }
 };

@@ -8,7 +8,7 @@ class Login extends Component {
     render() {
       return (
         <div>
-        <LoginForm />
+        <LoginForm username={this.props.username} password={this.props.password} handleChange={this.props.handleChange}/>
         </div>
       );
     }
