@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import API from "../../utils/API";
 import "./LoginForm.css";
+import {withRouter} from "react-router-dom";
 
 const styles = theme => ({
     textField: {
@@ -24,28 +25,42 @@ const styles = theme => ({
   });
 
 class TextFields extends React.Component {
-  
-  state = {
-    username: '',
-    password: ''
-  }
 
-    handleChange = name => event => {
-      this.setState({
-        [name]: event.target.value,
-      });
-    };
-
-    handleLogin = () => {
-      if (this.state.username && this.state.password) {
-        API.saveUser({
-          username: this.state.username,
-          password: this.state.password
-        })
-      .then(res => console.log(res))
+    handleRegister = () => {
+      const newUser = {
+        username: this.props.username,
+        password: this.props.password
+      }
+      if(this.props.username.length < 4) {
+        alert("Username must be longer than 4 characters.");
+      }
+      else if(this.props.password.length < 8) {
+        alert("Password must be at least 8 characters long.")
+      }
+      else {
+        API.saveUser(newUser)
+      .then(this.props.history.push("/"))
       .catch(err => console.log(err));
     }
     };
+
+    handleLogin = () => {
+      const redirect = this.props.history.push("/");
+      const passwordToCheck = this.props.password;
+      API.getUserbyName(this.props.username).then(function success(res) {
+        if(res.data.length === 0) {
+          alert("This user does not exist.");
+        }
+        else if(passwordToCheck === res.data[0].password) {
+          return redirect;
+        }
+        else {
+          alert("Inocorrect Password")
+        }
+      })
+      .catch(err => console.log(err)); 
+    
+    }
   
     render() {
       const { classes } = this.props;
@@ -60,8 +75,8 @@ class TextFields extends React.Component {
             id="username"
             label="username"
             className={classes.textField}
-            value={this.state.username}
-            onChange={this.handleChange('username')}
+            value={this.props.username}
+            onChange={this.props.handleChange('username')}
             margin="normal"
           /></div>
           <div className={"divCenter2"}><TextField
@@ -69,8 +84,8 @@ class TextFields extends React.Component {
             id="password-input"
             label="Password"
             className={classes.textField}
-            value={this.state.password}
-            onChange={this.handleChange('password')}
+            value={this.props.password}
+            onChange={this.props.handleChange('password')}
             type="password"
             autoComplete="current-password"
             margin="normal"
@@ -78,6 +93,9 @@ class TextFields extends React.Component {
           <div className={"btnCenter"}>
           <Button variant="contained" color="secondary" onClick={this.handleLogin} className={classes.button}>
             Login
+          </Button>
+          <Button variant="contained" color="primary" onClick={this.handleRegister} className={classes.button}>
+            Register
           </Button>
           </div>
           </div>
@@ -90,4 +108,4 @@ class TextFields extends React.Component {
     classes: PropTypes.object.isRequired,
   };
   
-  export default withStyles(styles)(TextFields);
+  export default withRouter(withStyles(styles)(TextFields));
