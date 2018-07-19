@@ -12,14 +12,7 @@ const UserSchema = new Schema({
       type: String,
       required: true,
     },
-    categories: {
-      type: Schema.Types.ObjectId,
-      ref: "Category"
-    },
-    cards: {
-      type: Schema.Types.ObjectId,
-      ref: "Card"
-    }
+    categories: [String]
   });
   const User = mongoose.model('User', UserSchema);
   module.exports = User;
