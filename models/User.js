@@ -15,6 +15,10 @@ const UserSchema = new Schema({
     categories: {
       type: Schema.Types.ObjectId,
       ref: "Category"
+    },
+    cards: {
+      type: Schema.Types.ObjectId,
+      ref: "Card"
     }
   });
   const User = mongoose.model('User', UserSchema);
