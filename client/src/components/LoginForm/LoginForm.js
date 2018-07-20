@@ -31,17 +31,22 @@ class TextFields extends React.Component {
         username: this.props.username,
         password: this.props.password
       }
-      if(this.props.username.length < 4) {
-        alert("Username must be longer than 4 characters.");
-      }
-      else if(this.props.password.length < 8) {
-        alert("Password must be at least 8 characters long.")
-      }
-      else {
-        API.saveUser(newUser)
-      .then(this.props.history.push("/"))
-      .catch(err => console.log(err));
-    }
+      API.getUserbyName(newUser.username).then(res => {
+        if(res.data.length !== 0) {
+          alert("Sorry, this username is already taken");
+        }
+        else if(this.props.username.length < 4) {
+          alert("Username must contain at least 4 characters.");
+        }
+        else if(this.props.password.length < 8) {
+          alert("Password must contain at least 8 characters.")
+        }
+        else {
+         API.saveUser(newUser)
+        .then(this.props.history.push("/"))
+        .catch(err => console.log(err));
+        }
+      })
     };
 
     handleLogin = () => {
@@ -55,7 +60,7 @@ class TextFields extends React.Component {
           return redirect;
         }
         else {
-          alert("Inocorrect Password")
+          alert("Inocorrect Password");
         }
       })
       .catch(err => console.log(err)); 
