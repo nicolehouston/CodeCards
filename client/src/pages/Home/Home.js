@@ -5,11 +5,17 @@ import AddButton from "../../components/AddButton";
 import API from "../../utils/API";
 import CategoryCard from "../../components/CategoryCard";
 import keyIndex from 'react-key-index';
+import "./Home.css";
 
 class Home extends Component {
   state = {
     categories: []
   }
+
+  removeCategories = id => {
+    const categories = this.state.categories.filter(categories => categories.id !== id);
+    this.setState({ categories });
+  };
 
   componentDidMount() {
     if(this.props.username.length !== 0) {
@@ -32,17 +38,19 @@ class Home extends Component {
     let arr = this.state.categories;
     arr = keyIndex(arr, 1);
     const list = arr.map((category) =>(
-      <CategoryCard 
+      <CategoryCard className={"categoryCard"}
         key = {category.id}
         category = {category.value}
+        removeCategories={this.removeCategories}
       />
     ))
     return (
       <div>
       <Title />
-      <Wrapper />
       <div className={"cards"}>
+      <Wrapper>
       {list}
+      </Wrapper>
       </div>
       <AddButton username={this.props.username} addCategory={this.addCategory}/>
       </div>

@@ -59,7 +59,7 @@ class SimpleModal extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false});
   };
 
   handleChange = name => event => {
@@ -84,8 +84,7 @@ class SimpleModal extends React.Component {
   render() {
     const { classes } = this.props;
 
-    
-
+  
     return (
       <div>
         <div className={"myButton"}>
@@ -97,6 +96,7 @@ class SimpleModal extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
+          <form onSubmit={this.handleSubmit}>
             <Typography variant="title" id="modal-title">
               Create a Card Category:
             </Typography>
@@ -110,6 +110,7 @@ class SimpleModal extends React.Component {
         <Button onClick ={this.handleSubmit} variant="contained" size="small" color="primary" className={classes.button}>
           Submit
         </Button>
+        </form>
           </div>
         </Modal>
       </div>
