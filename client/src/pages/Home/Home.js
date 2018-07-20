@@ -4,6 +4,7 @@ import Title from "../../components/Title";
 import AddButton from "../../components/AddButton";
 import API from "../../utils/API";
 import CategoryCard from "../../components/CategoryCard";
+import keyIndex from 'react-key-index';
 
 class Home extends Component {
   state = {
@@ -11,26 +12,39 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    API.getUserbyName(this.props.username)
+    if(this.props.username.length !== 0) {
+      API.getUserbyName(this.props.username)
       .then(res => {
-        this.setState({ categories: res.data[0].categories})
+        this.setState({ categories: res.data[0].categories});
       }
-      );
+    );
+    }
+  }
+
+  addCategory = (item) => {
+    console.log(item);
+    const newCategories = [...this.state.categories, item];
+    this.setState({
+      categories: newCategories})
   }
 
   render() {
+    let arr = this.state.categories;
+    arr = keyIndex(arr, 1);
+    const list = arr.map((category) =>(
+      <CategoryCard 
+        key = {category.id}
+        category = {category.value}
+      />
+    ))
     return (
       <div>
       <Title />
       <Wrapper />
       <div className={"cards"}>
-      {this.state.categories.map(category => (
-      <CategoryCard 
-        category = {category}
-      />
-      ))}
+      {list}
       </div>
-      <AddButton username={this.props.username}/>
+      <AddButton username={this.props.username} addCategory={this.addCategory}/>
       </div>
     );
   }
