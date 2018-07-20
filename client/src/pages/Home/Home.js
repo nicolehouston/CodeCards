@@ -2,26 +2,35 @@ import React, { Component } from "react";
 import Wrapper from "../../components/Wrapper";
 import Title from "../../components/Title";
 import AddButton from "../../components/AddButton";
-import InfoCards from "../../components/InfoCards";
-import categories from "./categories.json";
-
-
-
+import API from "../../utils/API";
+import CategoryCard from "../../components/CategoryCard";
 
 class Home extends Component {
+  state = {
+    categories: []
+  }
+
+  componentDidMount() {
+    API.getUserbyName(this.props.username)
+      .then(res => {
+        this.setState({ categories: res.data[0].categories})
+      }
+    );
+  }
 
   render() {
     return (
       <div>
-      <Wrapper>
-      <Title>My Categories</Title>
-      {this.state.categories.map(categories => (
-      <InfoCards 
-
+      <Title />
+      <Wrapper />
+      <div className={"cards"}>
+      {this.state.categories.map(category => (
+      <CategoryCard className={"categoryCard"}
+        category = {category}
       />
       ))}
-      </Wrapper>
-      <AddButton />
+      </div>
+      <AddButton username={this.props.username}/>
       </div>
     );
   }

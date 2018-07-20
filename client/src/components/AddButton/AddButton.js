@@ -6,6 +6,8 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import "./AddButton.css";
+import TextField from '@material-ui/core/TextField';
+import API from "../../utils/API";
 
 
 function getModalStyle() {
@@ -48,6 +50,7 @@ const styles = theme => ({
 
 class SimpleModal extends React.Component {
   state = {
+    category: '',
     open: false,
   };
 
@@ -59,15 +62,20 @@ class SimpleModal extends React.Component {
     this.setState({ open: false});
   };
 
-  handleInputChange = (event) => {
-    this.setState({Category: event.target.value});
-    console.log(this.state.Category);
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value,
+    });
   };
 
   handleSubmit = () => {
-    console.log('This is:', this);
-  };
-
+    const req = {
+      username: this.props.username,
+      category: this.state.category
+    }
+    API.saveCategory(req)
+      .then(res => console.log(res));
+  }
 
   render() {
     const { classes } = this.props;
@@ -88,15 +96,14 @@ class SimpleModal extends React.Component {
             <Typography variant="title" id="modal-title">
               Create a Card Category:
             </Typography>
-            <input
-            value={this.state.Category}
-            name="Category"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Category"
-            required
-          />
-        <Button variant="contained" size="small" color="primary" className={classes.button}>
+            <TextField
+          value={this.state.category}
+          id="uncontrolled"
+          className={classes.textField}
+          margin="normal"
+          onChange={this.handleChange('category')}
+        />
+        <Button onClick ={this.handleSubmit} variant="contained" size="small" color="primary" className={classes.button}>
           Submit
         </Button>
         </form>
