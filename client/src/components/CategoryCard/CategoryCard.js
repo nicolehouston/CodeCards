@@ -6,10 +6,15 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import "./CategoryCard.css";
 
 const styles = {
     card: {
       minWidth: 275,
+      marginBottom: 15,
+      marginLeft: 15,
+      marginTop: 15,
+      marginRight: 15,
     },
     bullet: {
       display: 'inline-block',
@@ -27,7 +32,6 @@ const styles = {
 
 function SimpleCard(props) {
     const { classes } = props;
-    const bull = <span className={classes.bullet}>•</span>;
   
     return (
       <div>
@@ -38,7 +42,9 @@ function SimpleCard(props) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Delete</Button>
+          <Button onClick={() => props.removeCategories(props.id)} className="remove" color="secondary">
+        Delete
+      </Button>
           </CardActions>
         </Card>
       </div>
