@@ -31,7 +31,7 @@ class App extends React.Component {
             <Route exact path="/login" render={(props) => <Login handleChange={this.handleChange} 
                                                           username={this.state.username} 
                                                           password={this.state.password}/>}/>
-            <Route exact path="/" render={(props) => <Home username={this.state.username} password={this.state.password}/>}/>
+            { localStorage.getItem("isLoggedin") === 'true' && <Route exact path="/" render={(props) => <Home username={this.state.username} password={this.state.password}/>}/>}
             <Route exact path="/:category" component={Category}/>
           </Switch>
         </div>

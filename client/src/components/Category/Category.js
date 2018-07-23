@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import AddCard from "../../components/AddCard";
 import keyIndex from 'react-key-index';
 import CardForm from "../../components/CardForm";
+import Wrapper from "../../components/Wrapper";
 
 
 class Category extends Component {
@@ -78,7 +79,9 @@ class Category extends Component {
 
         return(
             <div>
+            <Wrapper>
             {cardDiv}
+            </Wrapper>
             <AddCard changeMode={this.changeMode} createMode={this.state.createMode}/>
             </div>
         )

@@ -11,7 +11,13 @@ import "./InfoCards.css";
 
 const styles = {
   card: {
-    minWidth: 275,
+    width: 300,
+    marginBottom: 15,
+    marginLeft: 15,
+    marginTop: 15,
+    marginRight: 15,
+    display: 'inline-block',
+    textAlign: 'center'
   },
   bullet: {
     display: 'inline-block',
@@ -19,12 +25,21 @@ const styles = {
     transform: 'scale(0.8)',
   },
   title: {
-    marginBottom: 16,
-    fontSize: 14,
+    marginBottom: 5,
+    fontSize: 20,
+    border: 'solid 1px black',
+    paddingTop: 10,
+    paddingBottom: 10
   },
   pos: {
     marginBottom: 12,
   },
+  notes: {
+    margin: '5px 5px'
+  },
+  h3: {
+    textDecoration: 'underline'
+  }
 };
 
 function SimpleCard(props) {
@@ -34,12 +49,17 @@ function SimpleCard(props) {
     <div>
       <Card className={classes.card}>
         <CardContent>
-          <Typography variant="headline" color="textSecondary" component="h1">
+          <Typography className={classes.title} variant="headline" color="textSecondary" component="h1">
           {props.title}
           </Typography>
-        </CardContent>
+          <h3 className={classes.h3}>Notes</h3>
+          <div className={classes.notes}>
           {props.notes}
-          {props.link}
+          </div>
+          <div>
+          <b>Link:</b> <a href={props.link}>{props.link}</a>
+          </div>
+        </CardContent >
         <CardActions>
           <Button size="small">Delete</Button>
         </CardActions>
