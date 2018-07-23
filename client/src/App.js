@@ -10,7 +10,6 @@ class App extends React.Component {
   state = {
     username: '',
     password: '',
-    isRegistered: false,
     category: ''
   }
 
@@ -29,8 +28,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/login" render={(props) => <Login handleChange={this.handleChange} 
                                                           username={this.state.username} 
-                                                          password={this.state.password} 
-                                                          isRegistered={this.state.isRegistered}/>}/>
+                                                          password={this.state.password}/>}/>
             <Route exact path="/" render={(props) => <Home username={this.state.username} password={this.state.password}/>}/>
             <Route exact path="/:category" component={Category}/>
           </Switch>
