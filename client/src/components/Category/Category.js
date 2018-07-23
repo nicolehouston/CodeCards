@@ -1,0 +1,88 @@
+import React, { Component } from "react";
+import InfoCards from "../../components/InfoCards";
+import API from "../../utils/API";
+import AddCard from "../../components/AddCard";
+import keyIndex from 'react-key-index';
+import CardForm from "../../components/CardForm";
+
+class Category extends Component {
+    
+    state={
+        category: this.props.match.params.category,
+        username: '',
+        cards: [],
+        createMode: false
+    }
+
+    componentDidMount() {
+        if(localStorage.getItem("username")) {
+            this.setState({
+                username: localStorage.getItem("username")
+            })
+            API.getUserbyName(localStorage.getItem("username"))
+                .then(res => {
+                    if(res.data[0].levelOne.length !== 0) {
+                        this.setState({
+                            cards: res.data[0].levelOne
+                    })
+                }
+            })
+        }
+        
+    }
+
+    renderCards = () => {
+        API.getUserbyName(localStorage.getItem("username"))
+                .then(res => {
+                    if(res.data[0].levelOne.length !== 0) {
+                        this.setState({
+                            cards: res.data[0].levelOne
+                })
+            }
+        })
+    }
+
+    changeMode = (boolean) => {
+        if(boolean) {
+            this.setState({
+                createMode: false
+            })
+        }
+        else if(!boolean) {
+            this.setState({
+                createMode: true
+            })
+        }
+    }
+
+    render() {
+        let arr = this.state.cards;
+            arr = keyIndex(arr, 1);
+            const list = arr.map((card) =>(
+                <InfoCards
+                    title={card.card.title}
+                    notes={card.card.notes}
+                    link={card.card.link}
+                    className={"card"}
+                    key = {card.id}
+                />
+        ))
+
+        let cardDiv;
+        if(this.state.createMode) {
+            cardDiv = <CardForm renderCards={this.renderCards} category={this.state.category} changeMode={this.changeMode} createMode={this.state.createMode}/>
+        }
+        else {
+            cardDiv = list
+        }
+
+        return(
+            <div>
+            {cardDiv}
+            <AddCard changeMode={this.changeMode} createMode={this.state.createMode}/>
+            </div>
+        )
+    }
+}
+
+export default Category;
