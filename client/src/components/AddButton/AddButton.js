@@ -43,7 +43,9 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
-  }
+    color: '#0067B2',
+    fontFamily: 'Quicksand',
+  },
 });
 
 
@@ -52,6 +54,7 @@ class SimpleModal extends React.Component {
   state = {
     category: '',
     open: false,
+    onChange: '',
   };
 
   handleOpen = () => {
@@ -88,7 +91,7 @@ class SimpleModal extends React.Component {
     return (
       <div>
         <div className={"myButton"}>
-        <Button onClick={this.handleOpen} aria-label="Add" variant="fab" color="primary" className={classes.button}><AddIcon /></Button></div>
+        <Button onClick={this.handleOpen} aria-label="Add" variant="fab" color="warning" className={classes.button}><AddIcon /></Button></div>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -107,13 +110,13 @@ class SimpleModal extends React.Component {
           margin="normal"
           onChange={this.handleChange('category')}
         />
-        <Button onClick ={this.handleSubmit} variant="contained" size="small" color="primary" className={classes.button}>
+        <Button onClick ={this.handleSubmit} variant="contained" size="small" color="" className={classes.button}>
           Submit
         </Button>
         </form>
           </div>
         </Modal>
-      </div>
+        </div>    
     );
   }
 }

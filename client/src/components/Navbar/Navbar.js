@@ -15,11 +15,16 @@ const styles = {
   },
   flex: {
     flex: 1,
+    fontFamily: 'Quicksand',
+    textAlign: 'left',
   },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
+  login: {
+    fontFamily: 'Quicksand',
+  }
 };
 
 function ButtonAppBar(props) {
@@ -34,7 +39,7 @@ function ButtonAppBar(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>
           &lt;MyCodeCard/&gt;
           </Typography>
-          <Button color="inherit" href="/login">Login</Button>
+          <Button className={classes.login} color="inherit" href="/login">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
