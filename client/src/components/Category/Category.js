@@ -6,6 +6,7 @@ import keyIndex from 'react-key-index';
 import CardForm from "../../components/CardForm";
 import Wrapper from "../../components/Wrapper";
 
+
 class Category extends Component {
     
     state={

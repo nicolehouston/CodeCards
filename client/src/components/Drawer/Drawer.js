@@ -14,14 +14,15 @@ const styles = {
   fullList: {
     width: 'auto',
   },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  }
 };
 
 class TemporaryDrawer extends React.Component {
   state = {
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   };
 
   toggleDrawer = (side, open) => () => {
@@ -35,17 +36,16 @@ class TemporaryDrawer extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List></List>
+        <List>Home</List>
         <Divider />
-        <List></List>
       </div>
     );
 
     return (
       <div>
-        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer('left', true)}>
+         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.toggleDrawer('left', true)}>
             <MenuIcon />
-        </IconButton>
+          </IconButton>
         <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
           <div
             tabIndex={0}

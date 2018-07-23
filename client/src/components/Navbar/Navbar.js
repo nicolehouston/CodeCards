@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import "./NavBar.css";
-import Drawer from '../Drawer';
+import Drawer from "../Drawer";
 
 const styles = {
   root: {
@@ -16,10 +16,6 @@ const styles = {
     flex: 1,
     fontFamily: 'Quicksand',
     textAlign: 'left',
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
   },
   login: {
     fontFamily: 'Quicksand',
@@ -42,7 +38,7 @@ function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar className={"navy"}>
-          <Drawer />
+        <Drawer className={"menu"}/>
           <Typography variant="title" color="inherit" className={classes.flex}>
           &lt;MyCodeCard/&gt;
           </Typography>
