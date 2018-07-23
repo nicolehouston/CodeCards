@@ -62,7 +62,7 @@ class TextFields extends React.Component {
         else if(passwordToCheck !== res.data[0].password) {
           alert("Inocorrect Password");
         }
-        else {
+        else if(username === res.data[0].username && passwordToCheck === res.data[0].password){
           localStorage.setItem("username", username);
           localStorage.setItem("isLoggedin", "true");
           return redirect;
@@ -76,6 +76,7 @@ class TextFields extends React.Component {
       const { classes } = this.props;
   
       return (
+
         <form className={classes.container} noValidate autoComplete="off">
         <div className={"typewriter"}><h1>&lt;MyCodeCard/&gt;</h1></div>
         <div className={"logIn"}>
