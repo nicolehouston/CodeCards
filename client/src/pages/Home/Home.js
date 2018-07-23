@@ -4,33 +4,57 @@ import Title from "../../components/Title";
 import AddButton from "../../components/AddButton";
 import API from "../../utils/API";
 import CategoryCard from "../../components/CategoryCard";
+import keyIndex from 'react-key-index';
+import "./Home.css";
+import { Link } from "react-router-dom";
+
 
 class Home extends Component {
   state = {
-    categories: []
+    categories: [],
   }
+  
+
+  removeCategories = id => {
+    const categories = this.state.categories.filter(categories => categories.id !== id);
+    this.setState({ categories });
+  };
 
   componentDidMount() {
-    API.getUserbyName(this.props.username)
-      .then(res => {
-        this.setState({ categories: res.data[0].categories})
-      }
-      );
+    if(localStorage.getItem("isLoggedin") === "true") {
+      API.getUserbyName(localStorage.getItem("username")) 
+        .then(res => {
+            this.setState({ categories: res.data[0].categories});
+        })
+    }
+  }
+
+  addCategory = (item) => {
+    const newCategories = [...this.state.categories, item];
+    this.setState({
+      categories: newCategories})
   }
 
   render() {
+    let arr = this.state.categories;
+    arr = keyIndex(arr, 1);
+    const list = arr.map((category) =>(
+      <Link to={"/" + category.value} key={category.id}><CategoryCard 
+        className={"categoryCard"}
+        key = {category.id}
+        category = {category.value}
+        removeCategories={this.removeCategories}
+      /></Link>
+    ))
     return (
       <div>
       <Title />
-      <Wrapper />
       <div className={"cards"}>
-      {this.state.categories.map(category => (
-      <CategoryCard 
-        category = {category}
-      />
-      ))}
+      <Wrapper>
+      {list}
+      </Wrapper>
       </div>
-      <AddButton username={this.props.username}/>
+      <AddButton username={this.props.username} addCategory={this.addCategory}/>
       </div>
     );
   }

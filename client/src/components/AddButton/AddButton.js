@@ -43,7 +43,9 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
-  }
+    color: '#0067B2',
+    fontFamily: 'Quicksand',
+  },
 });
 
 
@@ -52,6 +54,7 @@ class SimpleModal extends React.Component {
   state = {
     category: '',
     open: false,
+    onChange: '',
   };
 
   handleOpen = () => {
@@ -59,7 +62,7 @@ class SimpleModal extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false});
   };
 
   handleChange = name => event => {
@@ -70,22 +73,25 @@ class SimpleModal extends React.Component {
 
   handleSubmit = () => {
     const req = {
-      username: this.props.username,
+      username: localStorage.getItem("username"),
       category: this.state.category
     }
     API.saveCategory(req)
-      .then(res => console.log(res));
+      .then(() => {
+        console.log(req.category);
+        this.props.addCategory(req.category)})
+      .catch(err => console.log(err));
+    this.setState({ open: false });
   }
 
   render() {
     const { classes } = this.props;
 
-    
-
+  
     return (
       <div>
         <div className={"myButton"}>
-        <Button onClick={this.handleOpen} aria-label="Add" variant="fab" color="primary" className={classes.button}><AddIcon /></Button></div>
+        <Button onClick={this.handleOpen} aria-label="Add" variant="fab" color="warning" className={classes.button}><AddIcon /></Button></div>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -93,6 +99,7 @@ class SimpleModal extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
+          <form onSubmit={this.handleSubmit}>
             <Typography variant="title" id="modal-title">
               Create a Card Category:
             </Typography>
@@ -103,12 +110,13 @@ class SimpleModal extends React.Component {
           margin="normal"
           onChange={this.handleChange('category')}
         />
-        <Button onClick ={this.handleSubmit} variant="contained" size="small" color="primary" className={classes.button}>
+        <Button onClick ={this.handleSubmit} variant="contained" size="small" color="" className={classes.button}>
           Submit
         </Button>
+        </form>
           </div>
         </Modal>
-      </div>
+        </div>    
     );
   }
 }

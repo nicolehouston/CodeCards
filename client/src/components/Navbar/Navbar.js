@@ -15,15 +15,30 @@ const styles = {
   },
   flex: {
     flex: 1,
+    fontFamily: 'Quicksand',
+    textAlign: 'left',
   },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
+  login: {
+    fontFamily: 'Quicksand',
+  }
 };
 
 function ButtonAppBar(props) {
   const { classes } = props;
+
+  let button;
+
+  if(localStorage.getItem("isLoggedin") === "true") {
+    button = <Button color="inherit" href="/login" >Logout</Button>
+  }
+  else {
+    button = <Button color="inherit" href="/login">Login</Button>
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -34,7 +49,7 @@ function ButtonAppBar(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>
           &lt;MyCodeCard/&gt;
           </Typography>
-          <Button color="inherit" href="/login">Login</Button>
+          {button}
         </Toolbar>
       </AppBar>
     </div>

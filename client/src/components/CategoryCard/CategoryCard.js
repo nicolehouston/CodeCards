@@ -6,10 +6,17 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import "./CategoryCard.css";
+import ButtonBase from '@material-ui/core/ButtonBase';
 
 const styles = {
     card: {
-      minWidth: 275,
+      minWidth: 250,
+      marginBottom: 15,
+      marginLeft: 15,
+      marginTop: 15,
+      marginRight: 15,
+      fontFamily: 'Quicksand',
     },
     bullet: {
       display: 'inline-block',
@@ -18,7 +25,7 @@ const styles = {
     },
     title: {
       marginBottom: 16,
-      fontSize: 14,
+      color: 'black',
     },
     pos: {
       marginBottom: 12,
@@ -27,20 +34,24 @@ const styles = {
 
 function SimpleCard(props) {
     const { classes } = props;
-    const bull = <span className={classes.bullet}>•</span>;
   
     return (
-      <div>
+      <div className={"cardInfo"}>
+        <ButtonBase>
         <Card className={classes.card}>
+
           <CardContent>
-            <Typography variant="headline" color="textSecondary" component="h1">
+            <Typography color="textSecondary">
                 {props.category}
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Delete</Button>
+          <Button onClick={() => props.removeCategories(props.id)} className="remove" color="secondary">
+          Delete
+          </Button>
           </CardActions>
         </Card>
+        </ButtonBase>
       </div>
     );
   }

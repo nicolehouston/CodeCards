@@ -18,6 +18,8 @@ const styles = theme => ({
     },
     button: {
       margin: theme.spacing.unit,
+      color: '#0067B2',
+      fontFamily: 'Quicksand',
     },
     input: {
       display: 'none',
@@ -31,43 +33,51 @@ class TextFields extends React.Component {
         username: this.props.username,
         password: this.props.password
       }
-      if(this.props.username.length < 4) {
-        alert("Username must be longer than 4 characters.");
-      }
-      else if(this.props.password.length < 8) {
-        alert("Password must be at least 8 characters long.")
-      }
-      else {
-        API.saveUser(newUser)
-      .then(this.props.history.push("/"))
-      .catch(err => console.log(err));
-    }
+      API.getUserbyName(newUser.username).then(res => {
+        if(res.data.length !== 0) {
+          alert("Sorry, this username is already taken");
+        }
+        else if(this.props.username.length < 4) {
+          alert("Username must contain at least 4 characters.");
+        }
+        else if(this.props.password.length < 8) {
+          alert("Password must contain at least 8 characters.")
+        }
+        else {
+         API.saveUser(newUser)
+        .then(this.props.history.push("/"))
+        .catch(err => console.log(err));
+        }
+      })
     };
 
     handleLogin = () => {
       const redirect = this.props.history.push("/");
       const passwordToCheck = this.props.password;
+      const username = this.props.username;
       API.getUserbyName(this.props.username).then(function success(res) {
         if(res.data.length === 0) {
           alert("This user does not exist.");
         }
-        else if(passwordToCheck === res.data[0].password) {
-          return redirect;
+        else if(passwordToCheck !== res.data[0].password) {
+          alert("Inocorrect Password");
         }
         else {
-          alert("Inocorrect Password")
+          localStorage.setItem("username", username);
+          localStorage.setItem("isLoggedin", "true");
+          return redirect;
         }
       })
       .catch(err => console.log(err)); 
     
     }
-  
+
     render() {
       const { classes } = this.props;
   
       return (
         <form className={classes.container} noValidate autoComplete="off">
-        <div><h1>&lt;MyCodeCard/&gt;</h1></div>
+        <div className={"typewriter"}><h1>&lt;MyCodeCard/&gt;</h1></div>
         <div className={"logIn"}>
         <h2>Login</h2>
           <div className={"divCenter"}><TextField
@@ -91,10 +101,10 @@ class TextFields extends React.Component {
             margin="normal"
           /></div>
           <div className={"btnCenter"}>
-          <Button variant="contained" color="secondary" onClick={this.handleLogin} className={classes.button}>
+          <Button variant="contained" color="" onClick={this.handleLogin} className={classes.button}>
             Login
           </Button>
-          <Button variant="contained" color="primary" onClick={this.handleRegister} className={classes.button}>
+          <Button variant="contained" color="" onClick={this.handleRegister} className={classes.button}>
             Register
           </Button>
           </div>
