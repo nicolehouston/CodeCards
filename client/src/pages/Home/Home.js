@@ -8,10 +8,12 @@ import keyIndex from 'react-key-index';
 import "./Home.css";
 import { Link } from "react-router-dom";
 
+
 class Home extends Component {
   state = {
     categories: [],
   }
+  
 
   removeCategories = id => {
     const categories = this.state.categories.filter(categories => categories.id !== id);

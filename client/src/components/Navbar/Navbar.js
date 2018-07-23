@@ -15,11 +15,16 @@ const styles = {
   },
   flex: {
     flex: 1,
+    fontFamily: 'Quicksand',
+    textAlign: 'left',
   },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
   },
+  login: {
+    fontFamily: 'Quicksand',
+  }
 };
 
 function ButtonAppBar(props) {
