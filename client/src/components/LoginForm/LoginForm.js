@@ -51,6 +51,7 @@ class TextFields extends React.Component {
       })
     };
 
+
     handleLogin = () => {
       const redirect = this.props.history.push("/");
       const passwordToCheck = this.props.password;
@@ -71,6 +72,7 @@ class TextFields extends React.Component {
       .catch(err => console.log(err)); 
     
     }
+
 
     render() {
       const { classes } = this.props;
