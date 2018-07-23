@@ -18,6 +18,8 @@ const styles = theme => ({
     },
     button: {
       margin: theme.spacing.unit,
+      color: '#0067B2',
+      fontFamily: 'Quicksand',
     },
     input: {
       display: 'none',
@@ -75,7 +77,7 @@ class TextFields extends React.Component {
   
       return (
         <form className={classes.container} noValidate autoComplete="off">
-        <div><h1>&lt;MyCodeCard/&gt;</h1></div>
+        <div className={"typewriter"}><h1>&lt;MyCodeCard/&gt;</h1></div>
         <div className={"logIn"}>
         <h2>Login</h2>
           <div className={"divCenter"}><TextField
@@ -99,10 +101,10 @@ class TextFields extends React.Component {
             margin="normal"
           /></div>
           <div className={"btnCenter"}>
-          <Button variant="contained" color="secondary" onClick={this.handleLogin} className={classes.button}>
+          <Button variant="contained" color="" onClick={this.handleLogin} className={classes.button}>
             Login
           </Button>
-          <Button variant="contained" color="primary" onClick={this.handleRegister} className={classes.button}>
+          <Button variant="contained" color="" onClick={this.handleRegister} className={classes.button}>
             Register
           </Button>
           </div>
