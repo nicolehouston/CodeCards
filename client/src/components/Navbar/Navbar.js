@@ -29,6 +29,16 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes } = props;
+
+  let button;
+
+  if(localStorage.getItem("isLoggedin") === "true") {
+    button = <Button color="inherit" href="/login" >Logout</Button>
+  }
+  else {
+    button = <Button color="inherit" href="/login">Login</Button>
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -39,7 +49,7 @@ function ButtonAppBar(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>
           &lt;MyCodeCard/&gt;
           </Typography>
-          <Button className={classes.login} color="inherit" href="/login">Login</Button>
+          {button}
         </Toolbar>
       </AppBar>
     </div>

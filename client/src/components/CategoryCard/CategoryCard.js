@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import "./CategoryCard.css";
 import ButtonBase from '@material-ui/core/ButtonBase';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = {
     card: {
@@ -40,14 +39,16 @@ function SimpleCard(props) {
       <div className={"cardInfo"}>
         <ButtonBase>
         <Card className={classes.card}>
+
           <CardContent>
             <Typography color="textSecondary">
                 {props.category}
             </Typography>
           </CardContent>
           <CardActions>
-          <DeleteIcon className={classes.icon} onClick={() => props.removeCategories(props.id) } color="secondary">
-      </DeleteIcon>
+          <Button onClick={() => props.removeCategories(props.id)} className="remove" color="secondary">
+          Delete
+          </Button>
           </CardActions>
         </Card>
         </ButtonBase>

@@ -73,7 +73,7 @@ class SimpleModal extends React.Component {
 
   handleSubmit = () => {
     const req = {
-      username: this.props.username,
+      username: localStorage.getItem("username"),
       category: this.state.category
     }
     API.saveCategory(req)

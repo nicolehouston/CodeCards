@@ -54,21 +54,24 @@ class TextFields extends React.Component {
     handleLogin = () => {
       const redirect = this.props.history.push("/");
       const passwordToCheck = this.props.password;
+      const username = this.props.username;
       API.getUserbyName(this.props.username).then(function success(res) {
         if(res.data.length === 0) {
           alert("This user does not exist.");
         }
-        else if(passwordToCheck === res.data[0].password) {
-          return redirect;
+        else if(passwordToCheck !== res.data[0].password) {
+          alert("Inocorrect Password");
         }
         else {
-          alert("Inocorrect Password");
+          localStorage.setItem("username", username);
+          localStorage.setItem("isLoggedin", "true");
+          return redirect;
         }
       })
       .catch(err => console.log(err)); 
     
     }
-  
+
     render() {
       const { classes } = this.props;
   
