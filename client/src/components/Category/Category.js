@@ -20,24 +20,23 @@ class Category extends Component {
             this.setState({
                 username: localStorage.getItem("username")
             })
-            API.getUserbyName(localStorage.getItem("username"))
-                .then(res => {
-                    if(res.data[0].levelOne.length !== 0) {
-                        this.setState({
-                            cards: res.data[0].levelOne
-                    })
-                }
-            })
+            this.renderCards();
         }
         
     }
 
     renderCards = () => {
         API.getUserbyName(localStorage.getItem("username"))
-                .then(res => {
-                    if(res.data[0].levelOne.length !== 0) {
-                        this.setState({
-                            cards: res.data[0].levelOne
+            .then(res => {
+                if(res.data[0].levelOne.length !== 0) {
+                    let newArr = [];
+                    for(let i = 0; i < res.data[0].levelOne.length; i++) {
+                        if(res.data[0].levelOne[i].category === this.state.category) {
+                                newArr.push(res.data[0].levelOne[i]);
+                        }
+                    }
+                    this.setState({
+                        cards: newArr
                 })
             }
         })
