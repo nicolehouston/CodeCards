@@ -9,6 +9,7 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 
 
+
 class Home extends Component {
   state = {
     categories: [],
