@@ -18,10 +18,7 @@ const styles = {
 
 class TemporaryDrawer extends React.Component {
   state = {
-    top: false,
     left: false,
-    bottom: false,
-    right: false,
   };
 
   toggleDrawer = (side, open) => () => {

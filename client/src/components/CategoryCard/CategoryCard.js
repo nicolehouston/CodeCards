@@ -34,6 +34,8 @@ const styles = {
 
 function SimpleCard(props) {
     const { classes } = props;
+    document.title = "My Categories"
+
   
     return (
       <div className={"cardInfo"}>

@@ -20,12 +20,15 @@ const styles = theme => ({
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
       width: 200,
+      fontFamily: 'Quicksand',
     },
     menu: {
       width: 200,
     },
     button: {
       margin: theme.spacing.unit,
+      color: '#0067B2',
+      fontFamily: 'Quicksand',
     }
   });
 
@@ -36,7 +39,8 @@ const styles = theme => ({
   
     
       return (
-          <Button aria-label="Add" variant="fab" color="primary" onClick={() => this.props.changeMode(this.props.createMode)} className={classes.button}><AddIcon /></Button>
+        <div className={"myButton"}>
+          <Button aria-label="Add" variant="fab" color="" onClick={() => this.props.changeMode(this.props.createMode)} className={classes.button}><AddIcon /></Button></div>
           
       );
     }
