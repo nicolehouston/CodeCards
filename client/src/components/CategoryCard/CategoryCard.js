@@ -36,6 +36,7 @@ function SimpleCard(props) {
     return (
       <div>
         <Card className={classes.card}>
+
           <CardContent>
             <Typography variant="headline" color="textSecondary" component="h1">
                 {props.category}
@@ -43,8 +44,8 @@ function SimpleCard(props) {
           </CardContent>
           <CardActions>
           <Button onClick={() => props.removeCategories(props.id)} className="remove" color="secondary">
-        Delete
-      </Button>
+          Delete
+          </Button>
           </CardActions>
         </Card>
       </div>
