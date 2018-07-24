@@ -9,7 +9,8 @@ router.route("/")
 router
   .route("/:name")
   .get(usersController.findByName)
-  .put(usersController.saveCategory);
+  .put(usersController.saveCategory)
+  .delete(usersController.deleteCategory);
 
   router
     .route("/:name/addCard")

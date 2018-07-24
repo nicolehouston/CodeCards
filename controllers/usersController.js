@@ -54,5 +54,12 @@ module.exports = {
       .update({ username: req.body.username }, update, { upsert: true })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  deleteCategory: function (req, res) {
+    const updateCategories = { $pull: { categories: req.body.category } };
+    db.User
+      .update({ username: req.body.username }, updateCategories, { upsert: true })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

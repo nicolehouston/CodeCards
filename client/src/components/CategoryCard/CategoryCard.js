@@ -37,6 +37,8 @@ const styles = {
     }
   };
 
+
+
 function SimpleCard(props) {
     const { classes } = props;
     document.title = "My Categories"
@@ -46,17 +48,16 @@ function SimpleCard(props) {
       <div className={"cardInfo"}>
         <ButtonBase href={"/" + props.category}>
         <Card className={classes.card}>
-
           <CardContent>
             <Typography className={classes.card} color="textSecondary">
                 {props.category}
             </Typography>
           </CardContent>
           <CardActions>
-          <Button onClick={() => props.removeCategories(props.id)} className={classes.remove} color="secondary">
+          <Button onClick={() => props.removeCategory(props.category)} className={classes.remove} color="secondary">
           Delete
           </Button>
-          </CardActions>
+        </CardActions>
         </Card>
         </ButtonBase>
       </div>
