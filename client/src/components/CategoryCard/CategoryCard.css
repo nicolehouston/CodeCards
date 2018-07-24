@@ -1,0 +1,2 @@
+.cardInfo { transition: all .2s ease-in-out; }
+.cardInfo:hover { transform: scale(1.1); }
