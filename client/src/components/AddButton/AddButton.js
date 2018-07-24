@@ -78,7 +78,6 @@ class SimpleModal extends React.Component {
     }
     API.saveCategory(req)
       .then(() => {
-        console.log(req.category);
         this.props.addCategory(req.category)})
       .catch(err => console.log(err));
     this.setState({ open: false });

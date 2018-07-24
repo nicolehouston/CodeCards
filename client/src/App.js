@@ -14,6 +14,7 @@ class App extends React.Component {
     category: ''
   }
 
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
@@ -25,12 +26,12 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Navbar />
+          <Navbar setLoggedin={this.setLoggedin}/>
           <Switch>
             <Route exact path="/login" render={(props) => <Login handleChange={this.handleChange} 
                                                           username={this.state.username} 
                                                           password={this.state.password}/>}/>
-            { localStorage.getItem("isLoggedin") === 'true' && <Route exact path="/" render={(props) => <Home username={this.state.username} password={this.state.password}/>}/>}
+            <Route exact path="/" render={(props) => <Home username={this.state.username} password={this.state.password} />}/>
             <Route exact path="/:category" component={Category}/>
           </Switch>
         </div>
