@@ -19,6 +19,6 @@ export default {
     return axios.put("api/users/" + cardData.username + "/addCard", cardData);
   },
   deleteCategory: function(req) {
-    return axios.delete("api/users" + req.username, req);
+    return axios.delete("api/users/" + req.username, req);
   }
 };

@@ -98,12 +98,8 @@ class TextFields extends React.Component {
         }
         else if(username === res.data[0].username && passwordToCheck === res.data[0].password){
           localStorage.setItem("username", username);
-<<<<<<< HEAD
           localStorage.setItem("isLoggedin", "true");
           this.props.handleLogin();
-=======
-           localStorage.setItem("isLoggedin", "true");
->>>>>>> origin/master
           this.props.history.push("/");
         }
       })

@@ -22,6 +22,7 @@ class Home extends Component {
   }
 
   removeCategory = (categoryName) => {
+    console.log(categoryName)
     const req = {
       username: localStorage.getItem("username"),
       category: categoryName
@@ -44,6 +45,7 @@ class Home extends Component {
         className={"categoryCard"}
         key = {category.id}
         category = {category.value}
+        removeCategory= {this.removeCategory}
       />
     ))
     return (
