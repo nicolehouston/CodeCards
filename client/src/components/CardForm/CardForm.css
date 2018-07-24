@@ -1,0 +1,27 @@
+.container {
+    border-radius: 5px;
+    padding: 20px;
+    display: block;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.button {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.cardForm {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btnForm {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }

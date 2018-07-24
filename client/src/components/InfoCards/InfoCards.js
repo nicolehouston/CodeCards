@@ -12,12 +12,14 @@ import "./InfoCards.css";
 const styles = {
   card: {
     width: 300,
+    height: 350,
     marginBottom: 15,
     marginLeft: 15,
     marginTop: 15,
     marginRight: 15,
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    position: 'relative',
   },
   bullet: {
     display: 'inline-block',
@@ -26,19 +28,28 @@ const styles = {
   },
   title: {
     marginBottom: 5,
-    fontSize: 20,
-    border: 'solid 1px black',
+    fontSize: 40,
+    fontWeight: 'bold',
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
+    fontFamily: 'Quicksand',
   },
   pos: {
     marginBottom: 12,
   },
   notes: {
-    margin: '5px 5px'
+    margin: '5px 5px',
+    fontFamily: 'Quicksand',
+    marginBottom: 50,
   },
   h3: {
-    textDecoration: 'underline'
+    fontFamily: 'Quicksand',
+  },
+  button: {
+    position: "absolute",
+    bottom: 5,
+    left: 0,
+    fontFamily: 'Quicksand',
   }
 };
 
@@ -46,22 +57,24 @@ function SimpleCard(props) {
   const { classes } = props;
 
   return (
-    <div>
+    <div className={"grow"}>
       <Card className={classes.card}>
         <CardContent>
           <Typography className={classes.title} variant="headline" color="textSecondary" component="h1">
           {props.title}
           </Typography>
-          <h3 className={classes.h3}>Notes</h3>
+          <div className={"card"}>
+          <h3 className={classes.h3}>My Notes:</h3>
           <div className={classes.notes}>
           {props.notes}
           </div>
           <div>
-          <b>Link:</b> <a href={props.link}>{props.link}</a>
+          <b>My Links:</b> <a href={props.link}>{props.link}</a>
+          </div>
           </div>
         </CardContent >
         <CardActions>
-          <Button size="small">Delete</Button>
+          <Button className={classes.button} size="small" color="secondary">Delete</Button>
         </CardActions>
       </Card>
     </div>

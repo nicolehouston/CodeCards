@@ -38,7 +38,6 @@ module.exports = {
   findByName: function(req, res) {
     db.User
       .find({ username: req.params.name })
-      // .populate("categories")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

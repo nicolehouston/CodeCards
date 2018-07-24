@@ -4,16 +4,16 @@ import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import API from "../../utils/API";
+import "./CardForm.css";
 
 const styles = theme => ({
     container: {
-        display: 'flex',
+        display: 'block',
         flexWrap: 'wrap',
     },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        width: "100%",
     },
     menu: {
         width: 200,
@@ -35,6 +35,7 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit,
+        fontFamily: 'Quicksand',
     },
       input: {
         display: 'none',
@@ -78,9 +79,11 @@ class CardForm extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div>
+            <div className={"grow"}>
             <Card className={classes.card}>
             <form className={classes.container} noValidate autoComplete="off">
+            <div>
+                <div className={"cardForm"}>
                 <TextField
                 id="title"
                 label="Name"
@@ -89,6 +92,8 @@ class CardForm extends React.Component {
                 onChange={this.handleChange('title')}
                 margin="normal"
                 />
+                </div>
+                <div className={"cardForm"}>
                 <TextField
                 id="notes"
                 label="Notes"
@@ -99,6 +104,8 @@ class CardForm extends React.Component {
                 className={classes.textField}
                 margin="normal"
                 />
+                </div>
+                <div className={"cardForm"}>
                 <TextField
                 id="link"
                 label="Link"
@@ -107,12 +114,16 @@ class CardForm extends React.Component {
                 onChange={this.handleChange('link')}
                 margin="normal"
                 />
+                </div>
+                <div className={"btnForm"}>
                 <Button variant="outlined" color="primary" onClick={this.submitCard} className={classes.button}>
                     Submit
                 </Button>
                 <Button variant="outlined" color="secondary" onClick={() => this.props.changeMode(this.props.createMode)} className={classes.button}>
                     Cancel
                 </Button>
+                </div>
+                </div>
             </form>
             </Card>
             </div>
