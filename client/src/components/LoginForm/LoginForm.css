@@ -8,6 +8,11 @@
     margin-bottom: 20px;
 }
 
+.modalBtn {
+    display: inline-block;
+    padding: 50px;
+}   
+
 .btnCenter {
     text-align: center;
 }
@@ -49,16 +54,17 @@ h2 {
 .typewriter h1 {
     padding-top: 40px;
     padding-bottom: 60px;
+    display: block;
     text-align: center;
-    font-size: 4rem;
+    font-size: 60px;
     color: rgb(0, 0, 0);
-    width: 45%;
+    width: 700px;
     font-family: 'Quicksand', sans-serif;
     text-shadow: horizontal-offset vertical-offset blur color;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     border-right: .15em solid orange; /* The typwriter cursor */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    margin:  auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .20em; /* Adjust as needed */
     animation: 
       typing 5.0s steps(40, end),
@@ -76,3 +82,4 @@ h2 {
     from, to { border-color: transparent }
     50% { border-color: orange; }
   }
+

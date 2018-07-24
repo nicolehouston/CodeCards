@@ -6,6 +6,19 @@ import Button from '@material-ui/core/Button';
 import API from "../../utils/API";
 import "./LoginForm.css";
 import {withRouter} from "react-router-dom";
+import Modal from '@material-ui/core/Modal';
+import Typography from '@material-ui/core/Typography';
+
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
 
 const styles = theme => ({
     textField: {
@@ -23,10 +36,22 @@ const styles = theme => ({
     },
     input: {
       display: 'none',
-    }
+    },
+    paper: {
+      position: 'absolute',
+      width: theme.spacing.unit * 30,
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing.unit * 4,
+    },
   });
 
 class TextFields extends React.Component {
+
+  state = {
+    open: false,
+    onClose: true,
+  }
 
     handleRegister = () => {
       const newUser = {
@@ -57,6 +82,9 @@ class TextFields extends React.Component {
       })
     };
 
+    handleClose = () => {
+      this.setState({ open: false});
+    };
 
     handleLogin = () => {
       const passwordToCheck = this.props.password.trim();
@@ -66,12 +94,16 @@ class TextFields extends React.Component {
           alert("This user does not exist.");
         }
         else if(passwordToCheck !== res.data[0].password) {
-          alert("Inocorrect Password");
+          this.setState({ open: true });
         }
         else if(username === res.data[0].username && passwordToCheck === res.data[0].password){
           localStorage.setItem("username", username);
+<<<<<<< HEAD
           localStorage.setItem("isLoggedin", "true");
           this.props.handleLogin();
+=======
+           localStorage.setItem("isLoggedin", "true");
+>>>>>>> origin/master
           this.props.history.push("/");
         }
       })
@@ -84,11 +116,27 @@ class TextFields extends React.Component {
       const { classes } = this.props;
   
       return (
-
         <form className={classes.container} noValidate autoComplete="off">
         <div className={"typewriter"}><h1>&lt;MyCodeCard/&gt;</h1></div>
         <div className={"logIn"}>
         <h2>Login</h2>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <div style={getModalStyle()} className={classes.paper}>
+            <Typography variant="title" id="modal-title">
+              Oops! Please enter your username and password again.
+            </Typography>
+            <div className={classes.modalBtn}>
+            <Button onClick={this.handleClose} variant="outlined" color="primary">
+            Ok!
+            </Button>
+            </div>
+          </div>
+        </Modal>
           <div className={"divCenter"}><TextField
           required
             id="username"
