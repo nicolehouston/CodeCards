@@ -45,7 +45,12 @@ class TextFields extends React.Component {
         }
         else {
          API.saveUser(newUser)
-        .then(this.props.history.push("/"))
+        .then(res => {
+          localStorage.setItem("username", newUser.username);
+          localStorage.setItem("isLoggedin", "true");
+          this.props.history.push("/")
+          }
+        )
         .catch(err => console.log(err));
         }
       })
@@ -53,10 +58,9 @@ class TextFields extends React.Component {
 
 
     handleLogin = () => {
-      const redirect = this.props.history.push("/");
       const passwordToCheck = this.props.password;
       const username = this.props.username;
-      API.getUserbyName(this.props.username).then(function success(res) {
+      API.getUserbyName(this.props.username).then(res => {
         if(res.data.length === 0) {
           alert("This user does not exist.");
         }
@@ -66,7 +70,7 @@ class TextFields extends React.Component {
         else if(username === res.data[0].username && passwordToCheck === res.data[0].password){
           localStorage.setItem("username", username);
           localStorage.setItem("isLoggedin", "true");
-          return redirect;
+          this.props.history.push("/");
         }
       })
       .catch(err => console.log(err)); 

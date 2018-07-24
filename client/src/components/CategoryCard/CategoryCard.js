@@ -12,11 +12,13 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 const styles = {
     card: {
       minWidth: 250,
-      marginBottom: 15,
-      marginLeft: 15,
-      marginTop: 15,
-      marginRight: 15,
+      marginBottom: 10,
+      marginLeft: 10,
+      marginTop: 10,
+      marginRight: 10,
       fontFamily: 'Quicksand',
+      textAlign: 'center',
+      fontSize: 25
     },
     bullet: {
       display: 'inline-block',
@@ -30,6 +32,9 @@ const styles = {
     pos: {
       marginBottom: 12,
     },
+    remove: {
+      textDecoration: 'none'
+    }
   };
 
 function SimpleCard(props) {
@@ -39,16 +44,16 @@ function SimpleCard(props) {
   
     return (
       <div className={"cardInfo"}>
-        <ButtonBase>
+        <ButtonBase href={"/" + props.category}>
         <Card className={classes.card}>
 
           <CardContent>
-            <Typography color="textSecondary">
+            <Typography className={classes.card} color="textSecondary">
                 {props.category}
             </Typography>
           </CardContent>
           <CardActions>
-          <Button onClick={() => props.removeCategories(props.id)} className="remove" color="secondary">
+          <Button onClick={() => props.removeCategories(props.id)} className={classes.remove} color="secondary">
           Delete
           </Button>
           </CardActions>

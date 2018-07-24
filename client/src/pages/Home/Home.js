@@ -6,9 +6,6 @@ import API from "../../utils/API";
 import CategoryCard from "../../components/CategoryCard";
 import keyIndex from 'react-key-index';
 import "./Home.css";
-import { Link } from "react-router-dom";
-
-
 
 class Home extends Component {
   state = {
@@ -40,12 +37,12 @@ class Home extends Component {
     let arr = this.state.categories;
     arr = keyIndex(arr, 1);
     const list = arr.map((category) =>(
-      <Link to={"/" + category.value} key={category.id}><CategoryCard 
+      <CategoryCard 
         className={"categoryCard"}
         key = {category.id}
         category = {category.value}
         removeCategories={this.removeCategories}
-      /></Link>
+      />
     ))
     return (
       <div>
