@@ -28,7 +28,7 @@ function ButtonAppBar(props) {
   let button;
 
   if(localStorage.getItem("isLoggedin") === "true") {
-    button = <Button color="inherit" href="/login" >Logout</Button>
+    button = <Button color="inherit" href="/login" onClick={props.handleLogout}>Logout</Button>
   }
   else {
     button = <Button color="inherit" href="/login">Login</Button>

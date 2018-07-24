@@ -55,8 +55,8 @@ class TextFields extends React.Component {
 
     handleRegister = () => {
       const newUser = {
-        username: this.props.username,
-        password: this.props.password
+        username: this.props.username.trim(),
+        password: this.props.password.trim()
       }
       API.getUserbyName(newUser.username).then(res => {
         if(res.data.length !== 0) {
@@ -73,6 +73,7 @@ class TextFields extends React.Component {
         .then(res => {
           localStorage.setItem("username", newUser.username);
           localStorage.setItem("isLoggedin", "true");
+          this.props.handleLogin();
           this.props.history.push("/")
           }
         )
@@ -86,8 +87,8 @@ class TextFields extends React.Component {
     };
 
     handleLogin = () => {
-      const passwordToCheck = this.props.password;
-      const username = this.props.username;
+      const passwordToCheck = this.props.password.trim();
+      const username = this.props.username.trim();
       API.getUserbyName(this.props.username).then(res => {
         if(res.data.length === 0) {
           alert("This user does not exist.");
@@ -97,7 +98,8 @@ class TextFields extends React.Component {
         }
         else if(username === res.data[0].username && passwordToCheck === res.data[0].password){
           localStorage.setItem("username", username);
-           localStorage.setItem("isLoggedin", "true");
+          localStorage.setItem("isLoggedin", "true");
+          this.props.handleLogin();
           this.props.history.push("/");
         }
       })
