@@ -6,6 +6,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Button from '@material-ui/core/Button';
 
 const styles = {
   list: {
@@ -17,7 +18,7 @@ const styles = {
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
-  }
+  },
 };
 
 class TemporaryDrawer extends React.Component {
@@ -36,8 +37,7 @@ class TemporaryDrawer extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List>Home</List>
-        <Divider />
+        <a href="/"> Home </a>
       </div>
     );
 
