@@ -12,12 +12,14 @@ import "./InfoCards.css";
 const styles = {
   card: {
     width: 300,
+    height: 350,
     marginBottom: 15,
     marginLeft: 15,
     marginTop: 15,
     marginRight: 15,
     display: 'inline-block',
-    textAlign: 'center'
+    textAlign: 'center',
+    position: 'relative'
   },
   bullet: {
     display: 'inline-block',
@@ -39,6 +41,11 @@ const styles = {
   },
   h3: {
     textDecoration: 'underline'
+  },
+  button: {
+    position: "absolute",
+    bottom: 5,
+    left: 0
   }
 };
 
@@ -61,7 +68,7 @@ function SimpleCard(props) {
           </div>
         </CardContent >
         <CardActions>
-          <Button size="small">Delete</Button>
+          <Button className={classes.button} size="small" color="secondary">Delete</Button>
         </CardActions>
       </Card>
     </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login/Login.js";
 import Navbar from "./components/Navbar";
-import Drawer from "./components/Drawer";
 import Home from "./pages/Home";
 import Category from "./components/Category";
 
