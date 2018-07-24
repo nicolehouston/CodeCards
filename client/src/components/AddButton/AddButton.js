@@ -74,13 +74,21 @@ class SimpleModal extends React.Component {
   handleSubmit = () => {
     const req = {
       username: localStorage.getItem("username"),
-      category: this.state.category
+      category: this.state.category.trim()
     }
-    API.saveCategory(req)
-      .then(() => {
-        this.props.addCategory(req.category)})
-      .catch(err => console.log(err));
-    this.setState({ open: false });
+    API.getUserbyName(req.username)
+      .then(res => {
+        if(res.data[0].categories.indexOf(req.category) === -1) {
+          API.saveCategory(req)
+            .then(() => {
+              this.props.addCategory(req.category)})
+            .catch(err => console.log(err));
+              this.setState({ open: false });
+        }
+        else {
+          alert("This category already exists!")
+        }
+      })
   }
 
   render() {
@@ -103,7 +111,7 @@ class SimpleModal extends React.Component {
               Create a Card Category:
             </Typography>
             <TextField
-          value={this.state.category}
+          value={this.state.category.trim()}
           id="uncontrolled"
           className={classes.textField}
           margin="normal"
@@ -124,7 +132,6 @@ SimpleModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// We need an intermediary variable for handling the recursive nesting.
 const SimpleModalWrapped = withStyles(styles)(SimpleModal);
 
 export default SimpleModalWrapped;

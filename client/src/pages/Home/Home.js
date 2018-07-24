@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Wrapper from "../../components/Wrapper";
-import Title from "../../components/Title";
 import AddButton from "../../components/AddButton";
 import API from "../../utils/API";
 import CategoryCard from "../../components/CategoryCard";
@@ -11,12 +10,6 @@ class Home extends Component {
   state = {
     categories: [],
   }
-  
-
-  removeCategories = id => {
-    const categories = this.state.categories.filter(categories => categories.id !== id);
-    this.setState({ categories });
-  };
 
   componentDidMount() {
     if(localStorage.getItem("isLoggedin") === "true") {
@@ -25,12 +18,22 @@ class Home extends Component {
             this.setState({ categories: res.data[0].categories});
         })
     }
+
+  }
+
+  removeCategory = (categoryName) => {
+    const req = {
+      username: localStorage.getItem("username"),
+      category: categoryName
+    }
+    API.deleteCategory(req)
+      .then(res => console.log(res));
   }
 
   addCategory = (item) => {
-    const newCategories = [...this.state.categories, item];
-    this.setState({
-      categories: newCategories})
+      const newCategories = [...this.state.categories, item];
+      this.setState({
+        categories: newCategories})  
   }
 
   render() {
@@ -41,12 +44,10 @@ class Home extends Component {
         className={"categoryCard"}
         key = {category.id}
         category = {category.value}
-        removeCategories={this.removeCategories}
       />
     ))
     return (
       <div>
-      <Title />
       <div className={"cards"}>
       <Wrapper>
       {list}

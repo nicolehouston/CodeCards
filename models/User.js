@@ -21,10 +21,6 @@ const UserSchema = new Schema({
         link: String
       }
     }]
-    // categories: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Category"
-    // }
   });
   const User = mongoose.model('User', UserSchema);
   module.exports = User;
