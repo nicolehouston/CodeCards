@@ -48,7 +48,7 @@ class TemporaryDrawer extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <MenuItem><a className={"home"} href="/"><HomeIcon className={classes.icon} />Home</a></MenuItem>
+        <MenuItem><a className={"home"} href="/home"><HomeIcon className={classes.icon} />Home</a></MenuItem>
         <Divider />
       </div>
     );
