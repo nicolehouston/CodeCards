@@ -4,7 +4,7 @@ import Login from "./pages/Login/Login.js";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Category from "./components/Category";
-// import Filler from "./pages/Filler";
+import Filler from "./pages/Filler";
 
 
 class App extends React.Component {
@@ -54,7 +54,7 @@ class App extends React.Component {
             {localStorage.getItem("isLoggedin") === "true" && 
             <Route exact path="/:category" component={Category}/>
             }
-            {/* <Route component={Filler} />  */}
+            { <Route component={Filler} />  }
           </Switch>
         </div>
       </Router>
