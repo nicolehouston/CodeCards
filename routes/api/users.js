@@ -9,11 +9,14 @@ router.route("/")
 router
   .route("/:name")
   .get(usersController.findByName)
-  .put(usersController.saveCategory)
-  // .delete(usersController.deleteCategory);
+  .put(usersController.saveCategory);
 
   router
     .route("/:name/addCard")
     .put(usersController.addInfoCard);
+
+  router
+  .route("/:name/delete")
+  .delete(usersController.deleteCategory);
   
 module.exports = router;

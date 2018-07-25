@@ -97,7 +97,7 @@ class CardForm extends React.Component {
                 <TextField 
                 id="notes"
                 label="Notes"
-                multiline
+                multiline 
                 rowsMax="6"
                 value={this.state.multiline}
                 onChange={this.handleChange('notes')}
