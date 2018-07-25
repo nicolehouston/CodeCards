@@ -19,7 +19,7 @@ const styles = {
     marginRight: 15,
     display: 'inline-block',
     textAlign: 'center',
-    position: 'relative',
+    position: 'relative'
   },
   bullet: {
     display: 'inline-block',
@@ -27,18 +27,16 @@ const styles = {
     transform: 'scale(0.8)',
   },
   title: {
-    marginBottom: 5,
     fontSize: 40,
     fontWeight: 'bold',
     paddingTop: 10,
-    paddingBottom: 10,
     fontFamily: 'Quicksand',
   },
   pos: {
     marginBottom: 12,
   },
   notes: {
-    margin: '5px 5px',
+    margin: '0px 5px 5px 5px',
     fontFamily: 'Quicksand',
     marginBottom: 50,
   },

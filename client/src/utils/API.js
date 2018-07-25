@@ -1,10 +1,6 @@
 import axios from "axios";
 
 export default {
-  // Deletes the user with the given id
-  deleteUser: function(id) {
-    return axios.delete("/api/users/" + id);
-  },
   // Saves a user to the database
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
@@ -18,7 +14,8 @@ export default {
   addInfoCard: function(cardData) {
     return axios.put("api/users/" + cardData.username + "/addCard", cardData);
   },
-  // deleteCategory: function(req) {
-  //   return axios.delete("api/users/" + req.username, req);
-  // }
+  deleteCategory: function(data) {
+    console.log(data);
+    return axios.delete("api/users/" + data.username + "/delete", data);
+  }
 };
