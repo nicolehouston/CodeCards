@@ -18,7 +18,6 @@ const styles = {
 };
 
 function SimpleCard(props) {
-  const { classes } = props;
 
   return (
     <div className={"buffer"}>

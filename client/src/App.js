@@ -4,7 +4,7 @@ import Login from "./pages/Login/Login.js";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Category from "./components/Category";
-// import Filler from "./pages/Filler";
+import Filler from "./pages/Filler";
 
 
 class App extends React.Component {
@@ -29,6 +29,7 @@ class App extends React.Component {
     this.setState({
       isLoggedin: false
     })
+    localStorage.setItem("isLoggedin", "false")
   }
 
   handleLogin = () => {
@@ -49,12 +50,12 @@ class App extends React.Component {
                                                           password={this.state.password}
                                                           handleLogin={this.handleLogin}/>}/>
             { localStorage.getItem("isLoggedin") === "true" && 
-            <Route exact path="/" render={(props) => <Home username={this.state.username} password={this.state.password} />}/>
+            <Route exact path="/home" render={(props) => <Home username={this.state.username} password={this.state.password} />}/>
             }
             {localStorage.getItem("isLoggedin") === "true" && 
             <Route exact path="/:category" component={Category}/>
             }
-            {/* <Route component={Filler} />  */}
+            <Route component={Filler} /> 
           </Switch>
         </div>
       </Router>
