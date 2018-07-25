@@ -3,6 +3,22 @@
     margin-bottom: 10px;
 }
 
+.box {
+    padding-top: 30px;
+}
+
+.header {
+    padding-top: 100px;
+    padding-bottom: 10px;
+    display: center;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    text-shadow: horizontal-offset vertical-offset blur color;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
 .divCenter2 {
     text-align: center;
     margin-bottom: 20px;
@@ -15,71 +31,37 @@
 
 .btnCenter {
     text-align: center;
+    display: flex;
+    margin-left: 20px;;
+    
 }
+
+.btn1 { transition: all .2s ease-in-out; }
+.btn1:hover { transform: scale(1.1); }
+
+.btn2 { transition: all .2s ease-in-out; }
+.btn2:hover { transform: scale(1.1); }
 
 .logIntro {
     text-align: center;
     font-size: 4rem;
     color: rgb(0, 0, 0);
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     margin-top: 50px;
     font-family: 'Quicksand', sans-serif;
     text-shadow: horizontal-offset vertical-offset blur color;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
-h2 {
-    text-align: center;
-    font-size: 3rem;
-    color: rgb(0, 0, 0);
-    margin-bottom: 20px;
-    margin-top: 10px;
-    font-family: 'Quicksand', sans-serif;
-    text-shadow: horizontal-offset vertical-offset blur color;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-}
-
 .logIn {
-    border-radius: 5px;
+    border-radius: 50px 15px;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background: rgba(255, 255, 255, 0.5); 
+    background: rgba(255, 255, 255, 0.151); 
     display: block;
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
-    width: 250px;
+    width: 250px;   
 }
-
-.typewriter h1 {
-    padding-top: 40px;
-    padding-bottom: 60px;
-    display: block;
-    text-align: center;
-    font-size: 60px;
-    color: rgb(0, 0, 0);
-    width: 700px;
-    font-family: 'Quicksand', sans-serif;
-    text-shadow: horizontal-offset vertical-offset blur color;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid orange; /* The typwriter cursor */
-    margin:  auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .20em; /* Adjust as needed */
-    animation: 
-      typing 5.0s steps(40, end),
-      blink-caret .75s step-end infinite;
-  }
-  
-  /* The typing effect */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
-  }
 

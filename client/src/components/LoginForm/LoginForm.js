@@ -113,9 +113,9 @@ class TextFields extends React.Component {
   
       return (
         <form className={classes.container} noValidate autoComplete="off">
-        <div className={"typewriter"}><h1>&lt;MyCodeCard/&gt;</h1></div>
+        <div className={"header"}>Get simple. Get started.</div>
+        <div className={"box"}>
         <div className={"logIn"}>
-        <h2>Login</h2>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -154,12 +154,17 @@ class TextFields extends React.Component {
             margin="normal"
           /></div>
           <div className={"btnCenter"}>
+          <div className={"btn1"}>
           <Button variant="contained" color="" onClick={this.handleLogin} className={classes.button}>
             Login
           </Button>
+          </div>
+          <div className={"btn2"}>
           <Button variant="contained" color="" onClick={this.handleRegister} className={classes.button}>
             Register
           </Button>
+          </div>
+          </div>
           </div>
           </div>
         </form>

@@ -81,7 +81,7 @@ class CardForm extends React.Component {
         return (
             <div className={"grow"}>
             <Card className={classes.card}>
-            <form className={classes.container} noValidate autoComplete="off">
+            <form className={classes.container} noValidate autoComplete="off" target="_blank">
             <div>
                 <div className={"cardForm"}>
                 <TextField
@@ -94,7 +94,7 @@ class CardForm extends React.Component {
                 />
                 </div>
                 <div className={"cardForm"}>
-                <TextField
+                <TextField 
                 id="notes"
                 label="Notes"
                 multiline
@@ -109,10 +109,12 @@ class CardForm extends React.Component {
                 <TextField
                 id="link"
                 label="Link"
+                multiline   
                 className={classes.textField}
                 value={this.state.topic}
                 onChange={this.handleChange('link')}
                 margin="normal"
+                target="_blank"
                 />
                 </div>
                 <div className={"btnForm"}>
