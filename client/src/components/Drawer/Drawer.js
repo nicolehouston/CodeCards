@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import "./Drawer.css";
 
 
@@ -22,6 +23,14 @@ const styles = {
   },
 };
 
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
+
 class TemporaryDrawer extends React.Component {
   state = {
     left: false,
@@ -32,13 +41,14 @@ class TemporaryDrawer extends React.Component {
       [side]: open,
     });
   };
+  
 
   render() {
     const { classes } = this.props;
 
     const sideList = (
       <div className={classes.list}>
-        <MenuItem><a className={"home"} href="/">Home</a></MenuItem>
+        <MenuItem><a className={"home"} href="/"><HomeIcon className={classes.icon} />Home</a></MenuItem>
         <Divider />
       </div>
     );

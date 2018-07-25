@@ -1,0 +1,60 @@
+.intro {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-shadow: horizontal-offset vertical-offset blur color;
+    text-shadow: 2px 4px 3px rgba(119, 119, 119, 0.3);
+}
+
+.subHeader {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    text-shadow: horizontal-offset vertical-offset blur color;
+    text-shadow: 2px 4px 3px rgba(119, 119, 119, 0.3);
+}
+
+.introBtn {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.introBtn { transition: all .2s ease-in-out; }
+.introBtn:hover { transform: scale(1.1); }
+
+.buffer {
+padding-top: 100px;
+}
+
+.typewriter h1 {
+    padding-top: 30px;
+    padding-bottom: 70px;
+    display: block;
+    text-align: center;
+    font-size: 70px;
+    color: rgb(0, 0, 0);
+    width: 700px;
+    font-family: 'Quicksand', sans-serif;
+    text-shadow: horizontal-offset vertical-offset blur color;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .1em solid orange; /* The typwriter cursor */
+    margin:  auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .20em; /* Adjust as needed */
+    animation: 
+      typing 2.0s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
