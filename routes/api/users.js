@@ -10,7 +10,7 @@ router
   .route("/:name")
   .get(usersController.findByName)
   .put(usersController.saveCategory)
-  .delete(usersController.deleteCategory);
+  // .delete(usersController.deleteCategory);
 
   router
     .route("/:name/addCard")
