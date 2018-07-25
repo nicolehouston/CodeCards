@@ -113,13 +113,13 @@ class TextFields extends React.Component {
       API.getUserbyName(this.props.username).then(res => {
         if(res.data.length === 0) {
           this.setState({
-            modalText: "This user does not exist.",
+            modalText: "This user does not exist",
             open: true
           })
         }
         else if(passwordToCheck !== res.data[0].password) {
           this.setState({
-            modalText: "Incorrect Password.",
+            modalText: "Incorrect Password",
             open: true
           })
         }
@@ -155,7 +155,7 @@ class TextFields extends React.Component {
             </Typography>
             <div className={classes.modalBtn}>
             <Button onClick={this.handleClose} variant="outlined" color="primary" className={classes.modalButton}>
-            Ok!
+            Ok
             </Button>
             </div>
           </div>
