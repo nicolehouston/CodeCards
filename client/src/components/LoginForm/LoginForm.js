@@ -34,6 +34,13 @@ const styles = theme => ({
       color: '#0067B2',
       fontFamily: 'Quicksand',
     },
+    modalButton: {
+      display: 'block',
+      margin: '0 auto',
+      marginTop: 10,
+      color: '#0067B2',
+      fontFamily: 'Quicksand',
+    },
     input: {
       display: 'none',
     },
@@ -44,6 +51,9 @@ const styles = theme => ({
       boxShadow: theme.shadows[5],
       padding: theme.spacing.unit * 4,
     },
+    modalText: {
+      textAlign: 'center'
+    }
   });
 
 class TextFields extends React.Component {
@@ -51,6 +61,7 @@ class TextFields extends React.Component {
   state = {
     open: false,
     onClose: true,
+    modalText: ''
   }
 
     handleRegister = () => {
@@ -60,13 +71,23 @@ class TextFields extends React.Component {
       }
       API.getUserbyName(newUser.username).then(res => {
         if(res.data.length !== 0) {
-          alert("Sorry, this username is already taken");
+          this.setState({
+            modalText: "Sorry, this username is already taken.",
+            open: true
+          })
+          
         }
         else if(this.props.username.length < 4) {
-          alert("Username must contain at least 4 characters.");
+          this.setState({
+            modalText: "Username must contain at least 4 characters.",
+            open: true
+          })
         }
         else if(this.props.password.length < 8) {
-          alert("Password must contain at least 8 characters.")
+          this.setState({
+            modalText: "Password must contain at least 8 characters.",
+            open: true
+          })
         }
         else {
          API.saveUser(newUser)
@@ -91,10 +112,16 @@ class TextFields extends React.Component {
       const username = this.props.username.trim();
       API.getUserbyName(this.props.username).then(res => {
         if(res.data.length === 0) {
-          alert("This user does not exist.");
+          this.setState({
+            modalText: "This user does not exist.",
+            open: true
+          })
         }
         else if(passwordToCheck !== res.data[0].password) {
-          this.setState({ open: true });
+          this.setState({
+            modalText: "Incorrect Password.",
+            open: true
+          })
         }
         else if(username === res.data[0].username && passwordToCheck === res.data[0].password){
           localStorage.setItem("username", username);
@@ -123,11 +150,11 @@ class TextFields extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="title" id="modal-title">
-              Oops! Please enter your username and password again.
+            <Typography variant="title" id="modal-title" className={classes.modalText}>
+              {this.state.modalText}
             </Typography>
             <div className={classes.modalBtn}>
-            <Button onClick={this.handleClose} variant="outlined" color="primary">
+            <Button onClick={this.handleClose} variant="outlined" color="primary" className={classes.modalButton}>
             Ok!
             </Button>
             </div>
