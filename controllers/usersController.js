@@ -56,11 +56,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   deleteCategory: function (req, res) {
-    console.log(req.body)
-    const updateCategories = { $pull: { levelOne: {category: req.body.category}, categories: req.body.category }};
-    console.log(updateCategories);
+    const updateCategories = { $pull: { "categories": req.body.category, levelOne: {"category": req.body.category} }};
     db.User
-      .update({ username: req.body.username }, updateCategories, { multi: true })
+      .findOneAndUpdate({ "username": req.body.username }, updateCategories, { upsert: true })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

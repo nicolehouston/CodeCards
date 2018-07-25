@@ -28,7 +28,6 @@
     "if-env": "^1.0.4",
     "material-ui-responsive-drawer": "^1.19.4",
     "mongoose": "^5.0.17",
-    "react-key-index": "^0.1.1",
     "react-native-drawer": "^2.5.0",
     "react-native-pulse": "^1.0.6"
   }
