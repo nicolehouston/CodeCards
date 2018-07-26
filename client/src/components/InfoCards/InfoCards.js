@@ -72,7 +72,7 @@ function SimpleCard(props) {
           {props.notes}
           </div>
           <div>
-          <b>My Links:</b> <a href={props.link}>{props.link}</a>
+          <b>My Links:</b> <a href={props.link} target="_blank">{props.link}</a>
           </div>
           </div>
         </CardContent >
