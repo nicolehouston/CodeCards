@@ -53,6 +53,9 @@ const styles = {
     top: 0,
     right: 0,
     fontFamily: 'Quicksand',
+  },
+  link: {
+    wordWrap: 'break-word'
   }
 };
 
@@ -72,7 +75,7 @@ function SimpleCard(props) {
           {props.notes}
           </div>
           <div>
-          <b>My Links:</b> <a href={props.link} target="_blank">{props.link}</a>
+          <b>My Links:</b> <a className={classes.link} href={props.link} target="_blank">{props.link}</a>
           </div>
           </div>
         </CardContent >
