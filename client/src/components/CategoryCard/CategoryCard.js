@@ -54,12 +54,12 @@ function SimpleCard(props) {
             </Typography>
           </CardContent>
           <CardActions>
+          <Button onClick={() => props.removeCategory(props.category)} className={classes.remove} color="secondary">
+          Delete
+          </Button>
         </CardActions>
         </Card>
         </ButtonBase>
-        <Button onClick={() => props.removeCategory(props.category)} className={classes.remove} color="secondary">
-          Delete
-          </Button>
       </div>
     );
   }

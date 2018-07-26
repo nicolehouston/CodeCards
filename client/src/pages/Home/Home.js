@@ -3,7 +3,6 @@ import Wrapper from "../../components/Wrapper";
 import AddButton from "../../components/AddButton";
 import API from "../../utils/API";
 import CategoryCard from "../../components/CategoryCard";
-import keyIndex from 'react-key-index';
 import "./Home.css";
 
 class Home extends Component {
@@ -23,11 +22,11 @@ class Home extends Component {
 
   removeCategory = (categoryName) => {
     console.log(categoryName)
-    const data = {
+    const req = {
       username: localStorage.getItem("username"),
       category: categoryName
     }
-    API.deleteCategory(data)
+    API.deleteCategory(req)
       .then(res => console.log(res));
   }
 
@@ -39,12 +38,11 @@ class Home extends Component {
 
   render() {
     let arr = this.state.categories;
-    arr = keyIndex(arr, 1);
     const list = arr.map((category) =>(
       <CategoryCard 
         className={"categoryCard"}
-        key = {category.id}
-        category = {category.value}
+        key = {category}
+        category = {category}
         removeCategory= {this.removeCategory}
       />
     ))

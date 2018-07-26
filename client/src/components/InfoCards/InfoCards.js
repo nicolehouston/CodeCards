@@ -45,6 +45,7 @@ const styles = {
     fontFamily: 'Quicksand',
   },
   button: {
+    display: 'flex',
     position: "absolute",
     bottom: 5,
     left: 0,

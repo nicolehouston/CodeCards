@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import InfoCards from "../../components/InfoCards";
 import API from "../../utils/API";
 import AddCard from "../../components/AddCard";
-import keyIndex from 'react-key-index';
 import CardForm from "../../components/CardForm";
 import Wrapper from "../../components/Wrapper";
 
@@ -58,14 +57,13 @@ class Category extends Component {
 
     render() {
         let arr = this.state.cards;
-            arr = keyIndex(arr, 1);
             const list = arr.map((card) =>(
                 <InfoCards
                     title={card.card.title}
                     notes={card.card.notes}
                     link={card.card.link}
                     className={"card"}
-                    key = {card.id}
+                    key = {card.card.title}
                 />
         ))
 
