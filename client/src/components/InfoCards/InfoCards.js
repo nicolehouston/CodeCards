@@ -20,7 +20,8 @@ const styles = {
     display: 'inline-block',
     textAlign: 'center',
     position: 'relative',
-    overflow: 'scroll'
+    overflowWrap: 'normal',
+    overflowY: 'scroll'
   },
   bullet: {
     display: 'inline-block',
@@ -37,9 +38,11 @@ const styles = {
     marginBottom: 12,
   },
   notes: {
-    margin: '0px 5px 5px 5px',
+    width: '100%',
+    margin: '5px',
     fontFamily: 'Quicksand',
     marginBottom: 50,
+    wordWrap: 'break-word'
   },
   h3: {
     fontFamily: 'Quicksand',
@@ -47,8 +50,8 @@ const styles = {
   button: {
     display: 'flex',
     position: "absolute",
-    bottom: 5,
-    left: 0,
+    top: 0,
+    right: 0,
     fontFamily: 'Quicksand',
   }
 };
