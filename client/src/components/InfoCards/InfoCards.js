@@ -19,7 +19,8 @@ const styles = {
     marginRight: 15,
     display: 'inline-block',
     textAlign: 'center',
-    position: 'relative'
+    position: 'relative',
+    overflow: 'scroll'
   },
   bullet: {
     display: 'inline-block',
