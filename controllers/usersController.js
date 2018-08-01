@@ -55,13 +55,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // deleteCategory: function (req, res) {
-  //   console.log(req.body)
-  //   const updateCategories = { $pull: { levelOne: {category: req.body.category}, categories: req.body.category }};
-  //   console.log(updateCategories);
-  //   db.User
-  //     .update({ username: req.body.username }, updateCategories, { multi: true })
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // }
+  deleteCategory: function (req, res) {
+    console.log(req.body)
+    const updateCategories = { $pull: { levelOne: {category: req.body.category}, categories: req.body.category }};
+    console.log(updateCategories);
+    db.User
+      .update({ username: req.body.username }, updateCategories, { multi: true })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
 };

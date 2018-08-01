@@ -18,6 +18,7 @@ const styles = {
       marginRight: 10,
       fontFamily: 'Quicksand',
       textAlign: 'center',
+      position: 'relative',
       fontSize: 25
     },
     bullet: {
@@ -33,6 +34,10 @@ const styles = {
       marginBottom: 12,
     },
     remove: {
+      display: 'flex',
+      position: "absolute",
+      top: 0,
+      right: 0,
       textDecoration: 'none'
     }
   };
@@ -46,20 +51,20 @@ function SimpleCard(props) {
   
     return (
       <div className={"cardInfo"}>
-        <ButtonBase href={"/" + props.category}>
         <Card className={classes.card}>
+        <ButtonBase href={"/" + props.category}>
           <CardContent>
             <Typography className={classes.card} color="textSecondary">
                 {props.category}
             </Typography>
           </CardContent>
           <CardActions>
-          <Button onClick={() => props.removeCategory(props.category)} className={classes.remove} color="secondary">
-          Delete
-          </Button>
         </CardActions>
-        </Card>
         </ButtonBase>
+        <Button onClick={() => props.removeCategory(props.category)} className={classes.remove} color="secondary">
+          Delete
+        </Button>
+        </Card>
       </div>
     );
   }

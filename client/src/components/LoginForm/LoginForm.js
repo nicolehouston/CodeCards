@@ -92,6 +92,7 @@ class TextFields extends React.Component {
         else {
          API.saveUser(newUser)
         .then(res => {
+          console.log(res);
           localStorage.setItem("username", newUser.username);
           localStorage.setItem("isLoggedin", "true");
           this.props.handleLogin();
